@@ -1,0 +1,35 @@
+.page {
+  background-color: #e5ebf1;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid var(--light-text, #FFF);
+  text-align: center;
+}
+
+.button:hover {
+  opacity: 0.80;
+  cursor: pointer;
+}
+
+.posts-list {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+}
