@@ -29,7 +29,7 @@ function App() {
           <Post
             key={post._id }
             title={post.title}
-            username={post.userId}
+            username={allUsers.find(user => user.id === post.userId).username}
             body={post.body}
           />
         ))}

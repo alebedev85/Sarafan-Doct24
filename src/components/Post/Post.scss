@@ -5,4 +5,15 @@
   border-radius: 10px;
   background-color: #fff;
   color: #000;
+
+  &__title{
+    margin: 0;
+    padding: 0;
+    color: #2a5885;
+  }
+
+  &__username {
+    margin: 0;
+    padding: 0;
+  }
 }
