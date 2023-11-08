@@ -25,14 +25,13 @@ function App() {
   return (
     <main className="page">
       <ul className='posts-list list'>
-        {allPosts.map((post, index) => (
+        {allPosts && allUsers ? allPosts.map((post) => (
           <Post
             key={post._id }
-            title={post.title}
-            username={allUsers.find(user => user.id === post.userId).username}
-            body={post.body}
+            username={allUsers.find(user => user.id === post.userId).username || ''}
+            post={post}
           />
-        ))}
+        )): <></> }
       </ul>
     </main>
   );
