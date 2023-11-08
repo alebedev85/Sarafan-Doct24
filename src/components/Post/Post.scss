@@ -21,8 +21,40 @@
     margin-bottom: 10px;
   }
 
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__buttons {
     display: flex;
     gap: 10px
+  }
+}
+
+.post-button {
+  width: 28px;
+  height: 28px;
+  background-color: #8898a58c;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center center;
+
+  &__save {
+    background-image: url(../../images/heart-svgrepo-com.svg);
+  }
+
+  &__comment {
+    background-image: url(../../images/comment-1-svgrepo-com.svg);
+  }
+
+  &__edit {
+    background-image: url(../../images/edit-pencil-01-svgrepo-com.svg);
+  }
+
+  &__delete {
+    background-image: url(../../images/delete-2-svgrepo-com.svg);
   }
 }

@@ -7,20 +7,25 @@ function Post({ username, post }) {
   }
 
   return (
-    <li className="post">
+    <li className='post'>
       <h2 className='post__title'>{post.title}</h2>
       <h3 className='post__username'>{username}</h3>
       <div className='post__text'>{post.body}</div>
-      <div className='post__buttons'>
-        <button type="button" name="buttonSave" className="save-button button"
-          onClick={handleCardDelete}>Save</button>
-        <button type="button" name="buttonComment" className="comment-button button"
-          onClick={handleCardDelete}>Comment</button>
-        <button type="button" name="buttonEdit" className="edit-button button"
-          onClick={handleCardDelete}>Edit</button>
-        <button type="button" name="buttonDelete" className="delete-button button"
-          onClick={handleCardDelete}>Delete</button>
+      <div className='post__container'>
+        <div className='post__buttons'>
+          <button type='button' name='buttonSave' className='post-button post-button__save button'
+            onClick={handleCardDelete}></button>
+          <button type='button' name='buttonComment' className='post-button post-button__comment button'
+            onClick={handleCardDelete}></button>
+          <button type='button' name='buttonEdit' className='post-button post-button__edit button'
+            onClick={handleCardDelete}></button>
+          <button type='button' name='buttonDelete' className='post-button post-button__delete button'
+            onClick={handleCardDelete}></button>
+        </div>
+        <input type='checkbox' value='yes' name='buttonDelete' className='checkbox'
+          onClick={handleCardDelete}></input>
       </div>
+
     </li>
   );
 }
