@@ -23,6 +23,17 @@ function App() {
       .catch((err) => console.log(err));
   }, [])
 
+  //обработтчик сохранения фильмов
+  function handlerSaveButtonClick(post) {
+    post.saved ? post.saved = !post.saved : post.saved = true;
+    setAllPosts((state) => state.map((p) => p.id === post.id ? post : p));
+  }
+
+  //обработтчик проверки сохраненных фильмов
+  function handlerCheckSaveMovie(movie) {
+    return movie.saved === true
+  }
+
   return (
     <div className='page'>
       <main className='main'>
@@ -37,6 +48,8 @@ function App() {
               key={post._id}
               username={allUsers.find(user => user.id === post.userId).username || ''}
               post={post}
+              onSaveClick={handlerSaveButtonClick}
+              isSaved={handlerCheckSaveMovie}
             />
           )) : <></>}
         </ul>

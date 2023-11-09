@@ -5,6 +5,10 @@
   background-color: #fff;
   color: #000;
 
+  &_saved {
+    background-color: #fff3f3;
+  }
+
   &__title {
     margin: 0;
     padding: 0;
@@ -43,6 +47,10 @@
 
   &__save {
     background-image: url(../../images/heart-svgrepo-com.svg);
+  }
+
+  &__save-active {
+    background-image: url(../../images/heart-svgrepo-com_activ.svg);
   }
 
   &__comment {
