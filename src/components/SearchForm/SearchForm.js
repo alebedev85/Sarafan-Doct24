@@ -58,11 +58,10 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
             <label
               className='search__label'
               htmlFor='search__checkbox'>
-              В избранном
             </label>
           </div>
           <select name="name" id="name-select" className='select'>
-            <option className='option' value="">-- Выберите город --</option>
+            <option className='option' value="">-- Выберите пользовтеля --</option>
             <option className='option' value="petersburg">Санкт-Петербург</option>
             <option className='option' value="samara">Самара</option>
             <option className='option' value="perm">Пермь</option>
