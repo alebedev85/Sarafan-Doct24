@@ -27,6 +27,7 @@ function App() {
     <div className='page'>
       <main className='main'>
         <SearchForm
+          allUsers={allUsers}
           onSearchMovie=''
           text=''
           statusCheckbox='' />

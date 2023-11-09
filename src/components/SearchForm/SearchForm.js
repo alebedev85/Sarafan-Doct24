@@ -3,7 +3,7 @@ import './SearchForm.scss';
 
 import searchIcon from '../../images/search-icon.svg'
 
-function SearchForm({ onSearchMovie, text, statusCheckbox }) {
+function SearchForm({ allUsers, onSearchMovie, text, statusCheckbox }) {
 
   const [searchText, setSearchText] = React.useState(text || '');
   const [checkboxStatus, setCheckboxStatus] = React.useState(statusCheckbox || false);
@@ -37,7 +37,7 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
             <input
               className='search__input'
               id='search-input'
-              placeholder='Название'
+              placeholder='Название статьи'
               type='text'
               name='searchInput'
               value={searchText}
@@ -61,11 +61,10 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
             </label>
           </div>
           <select name="name" id="name-select" className='select'>
-            <option className='option' value="">-- Выберите пользовтеля --</option>
-            <option className='option' value="petersburg">Санкт-Петербург</option>
-            <option className='option' value="samara">Самара</option>
-            <option className='option' value="perm">Пермь</option>
-            <option className='option' value="novosibirsk">Новосибирск</option>
+            <option className='option' value="" key='0'>-- Автор статьи --</option>
+            {allUsers ? allUsers.map((user) => (
+            <option className='option' value={user.username} key={user._id}>{user.username}</option>
+          )) : <></>}
           </select>
         </form>
       </div>
