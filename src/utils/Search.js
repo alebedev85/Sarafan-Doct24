@@ -7,7 +7,7 @@ class Search {
 
   //проверка на короткометражку
   _isShort(status, items) {
-    return status ? items.filter(item => item.duration <= DURATION_SHORT) : items
+    return status ? items.filter(item => item.saved === status) : items
   }
 
   /**
@@ -18,8 +18,9 @@ class Search {
      */
   search(text, statusCheckbox) {
     const searchText = text.toLowerCase()
-    return this._isShort(statusCheckbox, this._itemsList).filter(movie => Object.values(movie)
-      .some(value => typeof value === "string" ? value.toLowerCase().includes(searchText) : value === searchText));
+    return this._isShort(statusCheckbox, this._itemsList).filter(item => item.title.toLowerCase().includes(searchText));
+    // return this._isShort(statusCheckbox, this._itemsList).filter(movie => Object.values(movie)
+    //   .some(value => typeof value === "string" ? value.toLowerCase().includes(searchText) : value === searchText));
   };
 }
 

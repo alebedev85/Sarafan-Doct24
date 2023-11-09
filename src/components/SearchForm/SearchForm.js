@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchForm.scss';
 
 import searchIcon from '../../images/search-icon.svg'
 
-function SearchForm({ allUsers, onSearchMovie, text, statusCheckbox }) {
+function SearchForm({ allUsers, onSearch, text, statusCheckbox }) {
 
-  const [searchText, setSearchText] = React.useState(text || '');
-  const [checkboxStatus, setCheckboxStatus] = React.useState(statusCheckbox || false);
+  const [searchText, setSearchText] = useState(text || '');
+  const [checkboxStatus, setCheckboxStatus] = useState(statusCheckbox || false);
+
+  useEffect(() => {
+    onSearch(searchText, checkboxStatus);
+  }, [checkboxStatus])
 
   //контроллер текста
   function handleSearchText(e) {
@@ -21,7 +25,7 @@ function SearchForm({ allUsers, onSearchMovie, text, statusCheckbox }) {
   //обработтчик сабмита формы поиска фильмов
   function handleSearchMovieSubmit(e) {
     e.preventDefault();
-    onSearchMovie(searchText, checkboxStatus);
+    onSearch(searchText, checkboxStatus);
   }
 
   return (
