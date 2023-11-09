@@ -29,8 +29,8 @@ function App() {
   const searchPosts = new Search(allPosts) //экземпляр класса для поиска
 
   //обработчик поиска фильмов
-  function handleSearch(text, statusCheckbox) {
-    const searchResalt = searchPosts.search(text, statusCheckbox)
+  function handleSearch(text, statusCheckbox, value) {
+    const searchResalt = searchPosts.search(text, statusCheckbox, value)
     setFilteredPosts(searchResalt);
   };
 
@@ -56,7 +56,7 @@ function App() {
         <ul className='posts-list list'>
           {allPosts && allUsers ? filteredPosts.map((post) => (
             <Post
-              key={post._id}
+              key={`post${post.id}`}
               username={allUsers.find(user => user.id === post.userId).username || ''}
               post={post}
               onSaveClick={handlerSaveButtonClick}

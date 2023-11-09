@@ -6,8 +6,13 @@ class Search {
   }
 
   //проверка на короткометражку
-  _isShort(status, items) {
+  _isSaved(status, items) {
     return status ? items.filter(item => item.saved === status) : items
+  }
+
+  //проверка на короткометражку
+  _isSelecteBox(value) {
+    return value ? this._itemsList.filter(item => item.userId === Number(value)) : this._itemsList
   }
 
   /**
@@ -16,11 +21,9 @@ class Search {
      * @param {string} statusCheckbox - состояние чекбокса.
      * @returns {object} - отфильтрованный список
      */
-  search(text, statusCheckbox) {
+  search(text, status, value) {
     const searchText = text.toLowerCase()
-    return this._isShort(statusCheckbox, this._itemsList).filter(item => item.title.toLowerCase().includes(searchText));
-    // return this._isShort(statusCheckbox, this._itemsList).filter(movie => Object.values(movie)
-    //   .some(value => typeof value === "string" ? value.toLowerCase().includes(searchText) : value === searchText));
+    return this._isSaved(status, this._isSelecteBox(value)).filter(item => item.title.toLowerCase().includes(searchText));
   };
 }
 

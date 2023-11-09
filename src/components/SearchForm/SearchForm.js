@@ -3,14 +3,16 @@ import './SearchForm.scss';
 
 import searchIcon from '../../images/search-icon.svg'
 
-function SearchForm({ allUsers, onSearch, text, statusCheckbox }) {
+function SearchForm({ allUsers, onSearch, text, statusCheckbox, name }) {
 
   const [searchText, setSearchText] = useState(text || '');
   const [checkboxStatus, setCheckboxStatus] = useState(statusCheckbox || false);
+  const [selectedName, setSelectedName] = useState(name || '');
 
   useEffect(() => {
-    onSearch(searchText, checkboxStatus);
-  }, [checkboxStatus])
+    console.log(selectedName);
+    onSearch(searchText, checkboxStatus, selectedName);
+  }, [checkboxStatus, selectedName])
 
   //контроллер текста
   function handleSearchText(e) {
@@ -20,6 +22,11 @@ function SearchForm({ allUsers, onSearch, text, statusCheckbox }) {
   //контроллер чекбокса
   const handleCheckbox = (e) => {
     setCheckboxStatus(e.target.checked);
+  }
+
+  //контроллер выпадающего списка
+  const handleSelect = (e) => {
+    setSelectedName(e.target.value);
   }
 
   //обработтчик сабмита формы поиска фильмов
@@ -64,11 +71,16 @@ function SearchForm({ allUsers, onSearch, text, statusCheckbox }) {
               htmlFor='search__checkbox'>
             </label>
           </div>
-          <select name="name" id="name-select" className='select'>
-            <option className='option' value="" key='0'>-- Автор статьи --</option>
+          <select
+            name="name"
+            id="name-select"
+            className='select'
+            onChange={handleSelect}
+            checked={selectedName}>
+            <option className='option' value='' key='user'>- - Все авторы - -</option>
             {allUsers ? allUsers.map((user) => (
-            <option className='option' value={user.username} key={user._id}>{user.username}</option>
-          )) : <></>}
+              <option className='option' value={user.id} key={`user${user.id}`}>{user.username}</option>
+            )) : <></>}
           </select>
         </form>
       </div>
