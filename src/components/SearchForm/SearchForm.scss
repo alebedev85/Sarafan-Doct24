@@ -141,6 +141,47 @@
   background-image: url("../../images/heart-svgrepo-com_activ.svg");
 }
 
+
+.select {
+  // -webkit-appearance: none;
+  padding: 7px 40px 7px 12px;
+  // width: 100%;
+  // border: 1px solid #E8EAED;
+  border-radius: 5px;
+
+  // box-shadow: 0 1px 3px -2px #9098A9;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 150ms ease;
+  background: #8a8e92;
+  &:required:invalid {color: #5A667F};
+
+  &:focus {
+    outline: none;
+    border-color: #0077FF;
+    box-shadow: 0 0 0 2px rgba(#0077FF, .2);
+  }
+}
+
+.option {
+  color: #223254;
+  background: white;
+  &[value=""][disabled] {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: #0077FF;
+    box-shadow: 0 0 0 2px rgba(#0077FF, .2);
+  }
+
+  &:hover{
+    stroke: #0077FF
+  }
+}
+
 @media screen and (max-width: 768px) {
   .search {
     padding-top: 80px;

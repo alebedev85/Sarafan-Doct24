@@ -42,7 +42,7 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
               name='searchInput'
               value={searchText}
               onChange={handleSearchText}
-              />
+            />
             <button
               className='search__button button'
               type='submit' />
@@ -54,13 +54,20 @@ function SearchForm({ onSearchMovie, text, statusCheckbox }) {
               id='search__checkbox'
               value='yes'
               onChange={handleCheckbox}
-              checked={checkboxStatus}/>
+              checked={checkboxStatus} />
             <label
               className='search__label'
               htmlFor='search__checkbox'>
               В избранном
             </label>
           </div>
+          <select name="name" id="name-select" className='select'>
+            <option className='option' value="">-- Выберите город --</option>
+            <option className='option' value="petersburg">Санкт-Петербург</option>
+            <option className='option' value="samara">Самара</option>
+            <option className='option' value="perm">Пермь</option>
+            <option className='option' value="novosibirsk">Новосибирск</option>
+          </select>
         </form>
       </div>
 
