@@ -4,26 +4,30 @@ import { api } from '../../utils/MainApi.js';
 import SearchForm from '../SearchForm/SearchForm.js'
 import Post from '../Post/Post.js'
 import Search from '../../utils/Search';
+import Preloader from '../Preloader/Preloader.js';
 
 function App() {
 
   const [allPosts, setAllPosts] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]); //стейт для окончательного списка карточек
+  const [isPreloader, setIsPreloader] = useState(false);
 
   //получаем все начальные данные
   useEffect(() => {
-    api.getPosts()
-      .then((res) => {
-        setAllPosts(res);
-        setFilteredPosts(res);
-      })
-      .catch((err) => console.log(err));
-    api.getUsers()
-      .then((res) => {
-        setAllUsers(res);
-      })
-      .catch((err) => console.log(err));
+    Promise.all([
+      api.getPosts()
+        .then((res) => {
+          setAllPosts(res);
+          setFilteredPosts(res);
+        })
+        .catch((err) => console.log(err)),
+      api.getUsers()
+        .then((res) => {
+          setAllUsers(res);
+        })
+        .catch((err) => console.log(err))
+    ]).then(() => setIsPreloader(true))
   }, [])
 
   const searchPosts = new Search(allPosts) //экземпляр класса для поиска
@@ -46,26 +50,27 @@ function App() {
   }
 
   return (
-    <div className='page'>
-      <main className='main'>
-        <SearchForm
-          allUsers={allUsers}
-          onSearch={handleSearch}
-          text=''
-          statusCheckbox='' />
-        <ul className='posts-list list'>
-          {allPosts && allUsers ? filteredPosts.map((post) => (
-            <Post
-              key={`post${post.id}`}
-              username={allUsers.find(user => user.id === post.userId).username || ''}
-              post={post}
-              onSaveClick={handlerSaveButtonClick}
-              isSaved={handlerCheckSaveMovie}
-            />
-          )) : <></>}
-        </ul>
-      </main>
-    </div>
+    !isPreloader ? <Preloader /> :
+      <div className='page'>
+        <main className='main'>
+          <SearchForm
+            allUsers={allUsers}
+            onSearch={handleSearch}
+            text=''
+            statusCheckbox='' />
+          <ul className='posts-list list'>
+            {allPosts && allUsers ? filteredPosts.map((post) => (
+              <Post
+                key={`post${post.id}`}
+                username={allUsers.length ? allUsers.find(user => user.id === post.userId).username : ''}
+                post={post}
+                onSaveClick={handlerSaveButtonClick}
+                isSaved={handlerCheckSaveMovie}
+              />
+            )) : <></>}
+          </ul>
+        </main>
+      </div>
   );
 }
 
