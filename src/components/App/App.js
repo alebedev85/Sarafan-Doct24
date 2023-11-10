@@ -27,7 +27,7 @@ function App() {
           setAllUsers(res);
         })
         .catch((err) => console.log(err))
-    ]).then(() => setIsPreloader(true))
+    ]).then(() => setIsPreloader(false))
   }, [])
 
   const searchPosts = new Search(allPosts) //экземпляр класса для поиска
