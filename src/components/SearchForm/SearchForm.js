@@ -74,12 +74,12 @@ function SearchForm({ allUsers, onSearch, text, statusCheckbox, name }) {
           <select
             name="name"
             id="name-select"
-            className='select'
+            className='search__select'
             onChange={handleSelect}
             checked={selectedName}>
-            <option className='option' value='' key='user'>- - Все авторы - -</option>
+            <option className='search__option' value='' key='user'>- - Все авторы - -</option>
             {allUsers ? allUsers.map((user) => (
-              <option className='option' value={user.id} key={`user${user.id}`}>{user.username}</option>
+              <option className='search__option' value={user.id} key={`user${user.id}`}>{user.username}</option>
             )) : <></>}
           </select>
         </form>
