@@ -40,6 +40,7 @@
 }
 
 .preloader {
+  background-color: #e5ebf1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,30 +50,30 @@
 }
 
 .preloader__container {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   position: relative;
 }
 
 .preloader__round {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   position: absolute;
   top: 0;
   left: 0;
   background: rgba(136, 152, 165);
-  border-radius: 50px;
+  border-radius: 100px;
 }
 
 .preloader__round::after,
 .preloader__round::before {
   content: '';
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 50px;
+  border-radius: 100px;
 }
 
 .preloader__round::after {

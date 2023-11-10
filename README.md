@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+## Работа с данными, полученными из API
+<b>Задача:</b> разработать приложение, выводящее посты из API с возможностью взаимодействия с
+ними.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<b>Требования:</b>
 
-## Available Scripts
+* Использовать React.js, Redux-toolkit
+* Использовать компонентный подход для создания приложения
+* (Пмроиблиолжьенныиеетедлоелфжнооныб,ыптльаноштзеытывч,инваыстмолиьнхыоерокшомопьвюытглерядые)ть на разных устройствах
+* Работа со стилями на свое усмотрение(без использования библиотек)
 
-In the project directory, you can run:
+В качестве API использовать сервис [JSONPlaceholder - Free Fake REST API (typicode.com)](https://jsonplaceholder.typicode.com).
 
-### `npm start`
+## Описание приложения:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# «Посты»
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<b>Метод API: /posts</b>
 
-### `npm test`
+Необходимо вывести все посты из API постранично, по умолчанию 10 штук на странице. Должна
+быть возможность изменить количество выводимых постов (10, 20, 50, 100, все). При перезагрузке
+изменения должны сохраниться.(использовать localStoradge)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Каждый пост состоит из названия, имени пользователя (метод API: /users), его добавившего,
+основного текста, кнопок «Комментарии», «Редактировать», «Удалить» и «В избранное» (сделать
+иконками), а также чекбокса, позволяющего выделять несколько постов.
 
-### `npm run build`
+В API есть методы добавления, удаления и редактирования, их нужно использовать. Данные на
+сервере при этом не изменятся, но на странице изменения должны отобразиться.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Описание кнопок
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<b>«Комментарии»:</b> кнопка должна иметь два состояния. По умолчанию кнопка неактивна. При
+нажатии на неё, она становится активной, а под постом появляются комментарии. У каждого
+комментария отображается имя отправителя, его e-mail и текст самого комментария. При
+повторном нажатии кнопки, блок с комментариями скрывается, кнопка снова становится
+неактивной. Метод API: /comments.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<b>«Редактировать»:</b> при нажатии на кнопку должна появиться возможность изменить текст поста,
+его название и пользователя, от чьего имени опубликован пост. В режиме редактирования
+пользователь может сохранить или же отменить внесённые изменения.
+«Удалить»: появляется всплывающее окно с подтверждением удаления. При утвердительном
+ответе пост убирается со страницы, при отрицательном ничего не происходит.
 
-### `npm run eject`
+<b>«В избранное»:</b> пост должен как-либо выделиться внешне. Если нажать на кнопку повторно –
+пост удаляется из избранных.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<b>Чекбокс:<b> если хотя бы один пост отмечен чекбоксом, появляются две кнопки (к примеру, снизу)
+– «Удалить» и «В избранное». При нажатии на каждую из них должно всплыть окно с
+подтверждением. После утвердительного ответа происходит соответствующее массовое действие
+(удалить или добавить в избранное все отмеченные посты). После отрицательного – ничего не
+происходит, чекбоксы при этом остаются активными.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Фильтры и сортировка
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Сверху должны присутствовать три фильтра: по названию поста, по имени пользователя, по
+нахождению в списке избранных. Фильтр по имени пользователя реализовать в виде выпадающего
+списка.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Пользователь должен иметь возможность сортировать посты в обе стороны по ID, названию,
+имени пользователя и по нахождению в списке избранных.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Также, в верхней части необходимо разместить кнопку добавления нового поста. При нажатии
+на неё появляется всплывающее окно, в котором пользователь может указать название нового
+поста, его текст, а также выбрать пользователя, от чьего имени пост будет размещён. При
+сохранении пост добавляется на страницу.
