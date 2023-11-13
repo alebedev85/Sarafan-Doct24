@@ -40,38 +40,3 @@
   opacity: 0.80;
   cursor: pointer;
 }
-
-.next-posts-button {
-  border: 5px solid #76797c;
-  border-radius: 3px;
-  margin-bottom: 50px;
-  color: #2a5885;
-  &__text{
-    margin: 10px 20px;
-    font-size: 23px;
-    font-weight: 600;
-  }
-}
-
-.button-conteiner{
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  border: none;
-  margin-bottom: 50px;
-  padding: 0 50px;
-  box-sizing: border-box;
-}
-
-.number-of-posts-button{
-  color: #2a5885;
-  border-bottom: 2px solid #2a5885;
-
-  &__text{
-    margin: 0;
-    padding: 0;
-    margin-bottom: 5px;
-    font-size: 20px;
-    font-weight: 500;
-  }
-}
