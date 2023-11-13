@@ -2,7 +2,7 @@ import './App.scss';
 import React, { useState, useEffect } from 'react';
 import { api } from '../../utils/MainApi.js';
 import SearchForm from '../SearchForm/SearchForm.js'
-import Post from '../Post/Post.js'
+import PostsList from '../PostsList/PostsList.js'
 import Search from '../../utils/Search';
 import Preloader from '../Preloader/Preloader.js';
 import { POSTS_S, POSTS_M, POSTS_L, POSTS_XL } from '../../utils/constants.js'
@@ -88,17 +88,13 @@ function App() {
             onSearch={handleSearch}
             text=''
             statusCheckbox='' />
-          <ul className='posts-list list'>
-            {allPosts && allUsers ? shownPosts.map((post) => (
-              <Post
-                key={`post${post.id}`}
-                username={allUsers.length ? allUsers.find(user => user.id === post.userId).username : ''}
-                post={post}
-                onSaveClick={handlerSaveButtonClick}
-                isSaved={handlerCheckSaveMovie}
-              />
-            )) : <></>}
-          </ul>
+          <PostsList
+            allPosts={allPosts}
+            allUsers={allUsers}
+            shownPosts={shownPosts}
+            handlerSaveButtonClick={handlerSaveButtonClick}
+            handlerCheckSaveMovie={handlerCheckSaveMovie}
+          />
           {shownPosts.length < filteredPosts.length &&
             <button className='next-posts-button button' onClick={handleNextClick}>
               <p className='next-posts-button__text'>Ещё {shownPostsNumber}</p>
