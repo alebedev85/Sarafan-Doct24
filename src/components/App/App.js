@@ -39,7 +39,7 @@ function App() {
 
   useEffect(() => {
     setShownPosts(filteredPosts.slice(0, shownPostsNumber))
-  }, [shownPostsNumber])
+  }, [shownPostsNumber, filteredPosts])
 
   const searchPosts = new Search(allPosts) //экземпляр класса для поиска
 
