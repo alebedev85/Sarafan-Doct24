@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Sarafan-Doct24/static/css/main.068a3be0.css",
-    "main.js": "/Sarafan-Doct24/static/js/main.ba4a6304.js",
+    "main.css": "/Sarafan-Doct24/static/css/main.87da5c05.css",
+    "main.js": "/Sarafan-Doct24/static/js/main.9c5379d4.js",
     "static/media/comment-1-svgrepo-com.svg": "/Sarafan-Doct24/static/media/comment-1-svgrepo-com.96f6ecd4145b9edad1ef.svg",
     "static/media/edit-pencil-01-svgrepo-com.svg": "/Sarafan-Doct24/static/media/edit-pencil-01-svgrepo-com.532f7c50678a9e6b579f.svg",
     "static/media/heart-svgrepo-com.svg": "/Sarafan-Doct24/static/media/heart-svgrepo-com.9768ef5f6b2d897e7435.svg",
@@ -10,11 +10,11 @@
     "static/media/search-icon.svg": "/Sarafan-Doct24/static/media/search-icon.99b6633dbc8e355ba922a4a6eb5e4513.svg",
     "static/media/delete-2-svgrepo-com.svg": "/Sarafan-Doct24/static/media/delete-2-svgrepo-com.b28700980249a56d3a0b.svg",
     "static/media/heart-svgrepo-com_activ.svg": "/Sarafan-Doct24/static/media/heart-svgrepo-com_activ.4b2986ec7aadf178436e.svg",
-    "main.068a3be0.css.map": "/Sarafan-Doct24/static/css/main.068a3be0.css.map",
-    "main.ba4a6304.js.map": "/Sarafan-Doct24/static/js/main.ba4a6304.js.map"
+    "main.87da5c05.css.map": "/Sarafan-Doct24/static/css/main.87da5c05.css.map",
+    "main.9c5379d4.js.map": "/Sarafan-Doct24/static/js/main.9c5379d4.js.map"
   },
   "entrypoints": [
-    "static/css/main.068a3be0.css",
-    "static/js/main.ba4a6304.js"
+    "static/css/main.87da5c05.css",
+    "static/js/main.9c5379d4.js"
   ]
 }
