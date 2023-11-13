@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../../utils/MainApi.js';
 import SearchForm from '../SearchForm/SearchForm.js'
 import PostsList from '../PostsList/PostsList.js'
+import ControlButtons from '../ControlButtons/ControlButtons.js';
 import Search from '../../utils/Search';
 import Preloader from '../Preloader/Preloader.js';
 import { POSTS_S, POSTS_M, POSTS_L, POSTS_XL } from '../../utils/constants.js'
@@ -24,6 +25,7 @@ function App() {
         .then((res) => {
           setAllPosts(res);
           setFilteredPosts(res);
+          setShownPostsNumber(POSTS_S)
           setShownPosts(filteredPosts.slice(0, shownPostsNumber))
         })
         .catch((err) => console.log(err)),
@@ -41,20 +43,20 @@ function App() {
 
   const searchPosts = new Search(allPosts) //экземпляр класса для поиска
 
-  //обработчик поиска фильмов
+  //обработчик поиска постов
   function handleSearch(text, statusCheckbox, value) {
     const searchResalt = searchPosts.search(text, statusCheckbox, value)
     setFilteredPosts(searchResalt);
   };
 
-  //обработтчик сохранения фильмов
+  //обработтчик сохранения постов
   function handlerSaveButtonClick(post) {
     post.saved ? post.saved = !post.saved : post.saved = true;
     setAllPosts((state) => state.map((p) => p.id === post.id ? post : p));
   }
 
-  //обработтчик проверки сохраненных фильмов
-  function handlerCheckSaveMovie(movie) {
+  //обработтчик проверки сохраненных постов
+  function handlerCheckSavePost(movie) {
     return movie.saved === true
   }
 
@@ -93,26 +95,17 @@ function App() {
             allUsers={allUsers}
             shownPosts={shownPosts}
             handlerSaveButtonClick={handlerSaveButtonClick}
-            handlerCheckSaveMovie={handlerCheckSaveMovie}
+            handlerCheckSavePost={handlerCheckSavePost}
           />
-          {shownPosts.length < filteredPosts.length &&
-            <button className='next-posts-button button' onClick={handleNextClick}>
-              <p className='next-posts-button__text'>Ещё {shownPostsNumber}</p>
-            </button>}
-          <div className='button-conteiner'>
-            <button className='number-of-posts-button button' onClick={handleButtonSClick}>
-              <p className='number-of-posts-button__text'>Показать {POSTS_S}</p>
-            </button>
-            <button className='number-of-posts-button button' onClick={handleButtonMClick}>
-              <p className='number-of-posts-button__text'>Показать {POSTS_M}</p>
-            </button>
-            <button className='number-of-posts-button button' onClick={handleButtonLClick}>
-              <p className='number-of-posts-button__text'>Показать {POSTS_L}</p>
-            </button>
-            <button className='number-of-posts-button button' onClick={handleButtonXLClick}>
-              <p className='number-of-posts-button__text'>Показать все</p>
-            </button>
-          </div>
+          <ControlButtons
+            hasNext={shownPosts.length < filteredPosts.length}
+            handleNextClick={handleNextClick}
+            shownPostsNumber={shownPostsNumber}
+            handleButtonSClick={handleButtonSClick}
+            handleButtonMClick={handleButtonMClick}
+            handleButtonLClick={handleButtonLClick}
+            handleButtonXLClick={handleButtonXLClick}
+          />
         </main>
       </div>
   );
