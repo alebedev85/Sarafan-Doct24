@@ -5,11 +5,13 @@ import SearchForm from '../SearchForm/SearchForm.js'
 import Post from '../Post/Post.js'
 import Search from '../../utils/Search';
 import Preloader from '../Preloader/Preloader.js';
+import { POSTS_S, POSTS_M, POSTS_L, POSTS_XL } from '../../utils/constants.js'
 
 function App() {
 
   const [allPosts, setAllPosts] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [shownPostsNumber, setShownPostssNumber] = useState(POSTS_S);
   const [filteredPosts, setFilteredPosts] = useState([]); //стейт для окончательного списка карточек
   const [isPreloader, setIsPreloader] = useState(false);
 
@@ -59,7 +61,7 @@ function App() {
             text=''
             statusCheckbox='' />
           <ul className='posts-list list'>
-            {allPosts && allUsers ? filteredPosts.map((post) => (
+            {allPosts && allUsers ? filteredPosts.slice(0, shownPostsNumber).map((post) => (
               <Post
                 key={`post${post.id}`}
                 username={allUsers.length ? allUsers.find(user => user.id === post.userId).username : ''}
@@ -69,6 +71,23 @@ function App() {
               />
             )) : <></>}
           </ul>
+          <button className='next-posts-button button'>
+            <p className='next-posts-button__text'>Ещё {shownPostsNumber}</p>
+          </button>
+          <div className='button-conteiner'>
+            <button className='number-of-posts-button button'>
+              <p className='number-of-posts-button__text'>Показать 10</p>
+            </button>
+            <button className='number-of-posts-button button'>
+              <p className='number-of-posts-button__text'>Показать 20</p>
+            </button>
+            <button className='number-of-posts-button button'>
+              <p className='number-of-posts-button__text'>Показать 50</p>
+            </button>
+            <button className='number-of-posts-button button'>
+              <p className='number-of-posts-button__text'>Показать все</p>
+            </button>
+          </div>
         </main>
       </div>
   );
