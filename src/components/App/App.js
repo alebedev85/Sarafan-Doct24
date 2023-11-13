@@ -11,9 +11,11 @@ function App() {
 
   const [allPosts, setAllPosts] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
-  const [shownPostsNumber, setShownPostssNumber] = useState(POSTS_S);
+  const [shownPostsNumber, setShownPostsNumber] = useState(POSTS_S);
   const [filteredPosts, setFilteredPosts] = useState([]); //стейт для окончательного списка карточек
   const [isPreloader, setIsPreloader] = useState(false);
+  const [shownPosts, setShownPosts] = useState([]);
+
 
   //получаем все начальные данные
   useEffect(() => {
@@ -22,6 +24,7 @@ function App() {
         .then((res) => {
           setAllPosts(res);
           setFilteredPosts(res);
+          setShownPosts(filteredPosts.slice(0, shownPostsNumber))
         })
         .catch((err) => console.log(err)),
       api.getUsers()
@@ -31,6 +34,10 @@ function App() {
         .catch((err) => console.log(err))
     ]).then(() => setIsPreloader(true))
   }, [])
+
+  useEffect(() => {
+    setShownPosts(filteredPosts.slice(0, shownPostsNumber))
+  }, [shownPostsNumber])
 
   const searchPosts = new Search(allPosts) //экземпляр класса для поиска
 
@@ -51,6 +58,27 @@ function App() {
     return movie.saved === true
   }
 
+  function handleButtonSClick() {
+    setShownPostsNumber(POSTS_S)
+  };
+
+  function handleButtonMClick() {
+    setShownPostsNumber(POSTS_M)
+  };
+
+  function handleButtonLClick() {
+    setShownPostsNumber(POSTS_L)
+  };
+
+  function handleButtonXLClick() {
+    setShownPostsNumber(POSTS_XL)
+  };
+
+  //обработчик нажатия кнопки ещё
+  function handleNextClick() {
+    setShownPosts(filteredPosts.slice(0, shownPosts.length + shownPostsNumber))
+  };
+
   return (
     !isPreloader ? <Preloader /> :
       <div className='page'>
@@ -61,7 +89,7 @@ function App() {
             text=''
             statusCheckbox='' />
           <ul className='posts-list list'>
-            {allPosts && allUsers ? filteredPosts.slice(0, shownPostsNumber).map((post) => (
+            {allPosts && allUsers ? shownPosts.map((post) => (
               <Post
                 key={`post${post.id}`}
                 username={allUsers.length ? allUsers.find(user => user.id === post.userId).username : ''}
@@ -71,20 +99,21 @@ function App() {
               />
             )) : <></>}
           </ul>
-          <button className='next-posts-button button'>
-            <p className='next-posts-button__text'>Ещё {shownPostsNumber}</p>
-          </button>
+          {shownPosts.length < filteredPosts.length &&
+            <button className='next-posts-button button' onClick={handleNextClick}>
+              <p className='next-posts-button__text'>Ещё {shownPostsNumber}</p>
+            </button>}
           <div className='button-conteiner'>
-            <button className='number-of-posts-button button'>
-              <p className='number-of-posts-button__text'>Показать 10</p>
+            <button className='number-of-posts-button button' onClick={handleButtonSClick}>
+              <p className='number-of-posts-button__text'>Показать {POSTS_S}</p>
             </button>
-            <button className='number-of-posts-button button'>
-              <p className='number-of-posts-button__text'>Показать 20</p>
+            <button className='number-of-posts-button button' onClick={handleButtonMClick}>
+              <p className='number-of-posts-button__text'>Показать {POSTS_M}</p>
             </button>
-            <button className='number-of-posts-button button'>
-              <p className='number-of-posts-button__text'>Показать 50</p>
+            <button className='number-of-posts-button button' onClick={handleButtonLClick}>
+              <p className='number-of-posts-button__text'>Показать {POSTS_L}</p>
             </button>
-            <button className='number-of-posts-button button'>
+            <button className='number-of-posts-button button' onClick={handleButtonXLClick}>
               <p className='number-of-posts-button__text'>Показать все</p>
             </button>
           </div>
