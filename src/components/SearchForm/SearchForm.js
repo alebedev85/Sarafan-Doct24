@@ -84,8 +84,22 @@ function SearchForm({ allUsers, onSearch, text, statusCheckbox, name }) {
           </select>
         </form>
       </div>
-
-
+      <div className='seporator'></div>
+      <div className='sort__container'>
+        <h3 className='sort__title'>Сортировать по:</h3>
+        <button className='sort__button button'>
+          <p className='sort__button-text'>По списку</p>
+        </button>
+        <button className='sort__button button'>
+          <p className='sort__button-text'>По названию</p>
+        </button>
+        <button className='sort__button button'>
+          <p className='sort__button-text'>По автору</p>
+        </button>
+        <button className='sort__button button'>
+          <p className='sort__button-text'>В избранном</p>
+        </button>
+      </div>
     </section>
   );
 }

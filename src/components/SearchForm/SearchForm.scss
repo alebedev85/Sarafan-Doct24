@@ -1,18 +1,12 @@
 .search {
   width: 100%;
-
-  &__container {
-    // padding-bottom: 70px;
-    height: 100%;
-    // border-bottom: 1px solid #424242;
-  }
+  border-radius: 9px;
+  background: #76797c;
+  box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
 
   &__form {
     max-width: 1140px;
     height: 100px;
-    border-radius: 9px;
-    background: #76797c;
-    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -139,7 +133,12 @@
     font-size: 16px;
     transition: all 150ms ease;
     background: #8a8e92;
-    &:required:invalid {color: #5A667F};
+
+    &:required:invalid {
+      color: #5A667F
+    }
+
+    ;
 
     &:focus {
       outline: none;
@@ -151,6 +150,7 @@
   &__option {
     color: #223254;
     background: white;
+
     &[value=""][disabled] {
       display: none;
     }
@@ -161,7 +161,7 @@
       box-shadow: 0 0 0 2px rgba(#0077FF, .2);
     }
 
-    &:hover{
+    &:hover {
       stroke: #0077FF
     }
   }
@@ -185,4 +185,43 @@
   &__checkbox:checked+&__label::before {
     background-image: url("../../images/heart-svgrepo-com_activ.svg");
   }
+}
+
+.sort {
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 20px;
+    box-sizing: border-box;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__button {
+    padding: 0 5px;
+    border-radius: 1px;
+    border-bottom: 1.17px solid #000;
+
+    &:hover {
+      background-color: #8a8e92;
+    }
+  }
+
+  &__button-text {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 1.17em;
+  }
+}
+
+.seporator{
+  height: 2px;
+  margin: 0 10px;
+  background-color: #00000076;
+  border-radius: 1px;
 }
