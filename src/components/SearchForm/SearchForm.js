@@ -3,11 +3,15 @@ import './SearchForm.scss';
 
 import searchIcon from '../../images/search-icon.svg'
 
-function SearchForm({ allUsers, onSearch, text, statusCheckbox, name }) {
+function SearchForm({ allUsers, onSearch, onSort, text, statusCheckbox, name }) {
 
-  const [searchText, setSearchText] = useState(text || '');
-  const [checkboxStatus, setCheckboxStatus] = useState(statusCheckbox || false);
+  const [searchText, setSearchText] = useState(text || ''); //стейт для тескта поиска
+  const [checkboxStatus, setCheckboxStatus] = useState(statusCheckbox || false); //стейт для чекбокса поиска
   const [selectedName, setSelectedName] = useState(name || '');
+  const [idRevers, setIdRevers] = useState(false);
+  const [userRevers, setUserRevers] = useState(false);
+  const [titleRevers, setTitleRevers] = useState(false);
+  const [savedRevers, setSavedRevers] = useState(false);
 
   useEffect(() => {
     console.log(selectedName);
@@ -29,10 +33,34 @@ function SearchForm({ allUsers, onSearch, text, statusCheckbox, name }) {
     setSelectedName(e.target.value);
   }
 
-  //обработтчик сабмита формы поиска фильмов
+  //обработтчик поиска постов
   function handleSearchMovieSubmit(e) {
     e.preventDefault();
     onSearch(searchText, checkboxStatus);
+  }
+
+  //обработтчик сортировки постов по Id
+  function handleSortById() {
+    onSort('id');
+    setIdRevers(!idRevers);
+  }
+
+  //обработтчик сортировки постов по заголовку
+  function handleSortByTittle() {
+    onSort('title');
+    setTitleRevers(!titleRevers);
+  }
+
+  //обработтчик сортировки постов по автору
+  function handleSortByUser() {
+    onSort('userId');
+    setUserRevers(!userRevers);
+  }
+
+  //обработтчик сортировки постов в избранном
+  function handleSortBySaved() {
+    onSort('saved');
+    setSavedRevers(!savedRevers);
   }
 
   return (
@@ -87,16 +115,16 @@ function SearchForm({ allUsers, onSearch, text, statusCheckbox, name }) {
       <div className='seporator'></div>
       <div className='sort__container'>
         <h3 className='sort__title'>Сортировать по:</h3>
-        <button className='sort__button button'>
+        <button className='sort__button button' onClick={handleSortById}>
           <p className='sort__button-text'>По списку</p>
         </button>
-        <button className='sort__button button'>
+        <button className='sort__button button' onClick={handleSortByTittle}>
           <p className='sort__button-text'>По названию</p>
         </button>
-        <button className='sort__button button'>
+        <button className='sort__button button' onClick={handleSortByUser}>
           <p className='sort__button-text'>По автору</p>
         </button>
-        <button className='sort__button button'>
+        <button className='sort__button button' onClick={handleSortBySaved}>
           <p className='sort__button-text'>В избранном</p>
         </button>
       </div>

@@ -49,6 +49,15 @@ function App() {
     setFilteredPosts(searchResalt);
   };
 
+  //обработчик сортировки постов
+  function handleSort(param) {
+    const sortResalt = filteredPosts.sort((a, b) =>
+      b[param] < a[param] ? 1
+        : b[param] > a[param] ? -1
+          : 0)
+    setShownPosts(sortResalt.slice(0, shownPostsNumber))
+  };
+
   //обработтчик сохранения постов
   function handlerSaveButtonClick(post) {
     post.saved ? post.saved = !post.saved : post.saved = true;
@@ -88,6 +97,7 @@ function App() {
           <SearchForm
             allUsers={allUsers}
             onSearch={handleSearch}
+            onSort={handleSort}
             text=''
             statusCheckbox='' />
           <PostsList
