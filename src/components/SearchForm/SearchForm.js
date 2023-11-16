@@ -116,16 +116,16 @@ function SearchForm({ allUsers, onSearch, onSort, text, statusCheckbox, name }) 
       <div className='sort__container'>
         <h3 className='sort__title'>Сортировать по:</h3>
         <button className='sort__button button' onClick={handleSortById}>
-          <p className='sort__button-text'>По списку</p>
+          <p className='sort__button-text'>Списку<div className={`sort__revers ${idRevers ? 'sort__revers_yes' : 'sort__revers_no'}`}/></p>
         </button>
         <button className='sort__button button' onClick={handleSortByTittle}>
-          <p className='sort__button-text'>По названию</p>
+          <p className='sort__button-text'>Названию<div className={`sort__revers ${titleRevers ? 'sort__revers_yes' : 'sort__revers_no'}`}/></p>
         </button>
         <button className='sort__button button' onClick={handleSortByUser}>
-          <p className='sort__button-text'>По автору</p>
+          <p className='sort__button-text'>Автору<div className={`sort__revers ${userRevers ? 'sort__revers_yes' : 'sort__revers_no'}`}/></p>
         </button>
         <button className='sort__button button' onClick={handleSortBySaved}>
-          <p className='sort__button-text'>В избранном</p>
+          <p className='sort__button-text'>В избранном<div className={`sort__revers ${savedRevers ? 'sort__revers_yes' : 'sort__revers_no'}`}/></p>
         </button>
       </div>
     </section>
