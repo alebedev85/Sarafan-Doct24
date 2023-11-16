@@ -41,25 +41,25 @@ function SearchForm({ allUsers, onSearch, onSort, text, statusCheckbox, name }) 
 
   //обработтчик сортировки постов по Id
   function handleSortById() {
-    onSort('id');
+    onSort('id', idRevers);
     setIdRevers(!idRevers);
   }
 
   //обработтчик сортировки постов по заголовку
   function handleSortByTittle() {
-    onSort('title');
+    onSort('title', titleRevers);
     setTitleRevers(!titleRevers);
   }
 
   //обработтчик сортировки постов по автору
   function handleSortByUser() {
-    onSort('userId');
+    onSort('userId', titleRevers);
     setUserRevers(!userRevers);
   }
 
   //обработтчик сортировки постов в избранном
   function handleSortBySaved() {
-    onSort('saved');
+    onSort('saved', titleRevers);
     setSavedRevers(!savedRevers);
   }
 

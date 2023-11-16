@@ -50,11 +50,12 @@ function App() {
   };
 
   //обработчик сортировки постов
-  function handleSort(param) {
+  function handleSort(param, revers) {
     const sortResalt = filteredPosts.sort((a, b) =>
       b[param] < a[param] ? 1
         : b[param] > a[param] ? -1
           : 0)
+    if (revers) sortResalt.reverse()
     setShownPosts(sortResalt.slice(0, shownPostsNumber))
   };
 
