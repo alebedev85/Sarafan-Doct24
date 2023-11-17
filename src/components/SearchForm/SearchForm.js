@@ -3,7 +3,7 @@ import './SearchForm.scss';
 
 import searchIcon from '../../images/search-icon.svg'
 
-function SearchForm({ allUsers, onSearch, onSort, text, statusCheckbox, name }) {
+function SearchForm({ allUsers, onSearch, text, statusCheckbox, name }) {
 
   const [searchText, setSearchText] = useState(text || ''); //стейт для тескта поиска
   const [checkboxStatus, setCheckboxStatus] = useState(statusCheckbox || false); //стейт для чекбокса поиска
@@ -37,7 +37,6 @@ function SearchForm({ allUsers, onSearch, onSort, text, statusCheckbox, name }) 
 
   return (
     <section className='search'>
-      <div className='search__container'>
         <form className='search__form' name='searchForm' onSubmit={handleSearchMovieSubmit}>
           <div className='search__input-container'>
             <img
@@ -83,8 +82,6 @@ function SearchForm({ allUsers, onSearch, onSort, text, statusCheckbox, name }) 
             )) : <></>}
           </select>
         </form>
-      </div>
-      <div className='seporator'></div>
     </section>
   );
 }

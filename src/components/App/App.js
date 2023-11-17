@@ -1,7 +1,7 @@
 import './App.scss';
 import React, { useState, useEffect } from 'react';
 import { api } from '../../utils/MainApi.js';
-import SearchForm from '../SearchForm/SearchForm.js'
+import Tools from '../Tools/Tools.js'
 import PostsList from '../PostsList/PostsList.js'
 import ControlButtons from '../ControlButtons/ControlButtons.js';
 import Search from '../../utils/Search';
@@ -95,12 +95,13 @@ function App() {
     !isPreloader ? <Preloader /> :
       <div className='page'>
         <main className='main'>
-          <SearchForm
+          <Tools
             allUsers={allUsers}
             onSearch={handleSearch}
             onSort={handleSort}
             text=''
-            statusCheckbox='' />
+            statusCheckbox=''
+            name='' />
           <PostsList
             allPosts={allPosts}
             allUsers={allUsers}

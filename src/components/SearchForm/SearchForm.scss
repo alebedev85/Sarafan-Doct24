@@ -121,7 +121,6 @@
     font-weight: 400;
     line-height: 18px;
     position: relative;
-    ;
   }
 
   &__select {
@@ -137,8 +136,6 @@
     &:required:invalid {
       color: #5A667F
     }
-
-    ;
 
     &:focus {
       outline: none;
@@ -185,11 +182,4 @@
   &__checkbox:checked+&__label::before {
     background-image: url("../../images/heart-svgrepo-com_activ.svg");
   }
-}
-
-.seporator {
-  height: 2px;
-  margin: 0 19px;
-  background-color: #00000076;
-  border-radius: 1px;
 }
